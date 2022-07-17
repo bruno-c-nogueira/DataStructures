@@ -1,29 +1,31 @@
 class LinkedList<T> {
-    var head : Node<T>? = null
-    var tail : Node<T>? = null
+    var head: Node<T>? = null
+    var tail: Node<T>? = null
     private var size = 0
 
     fun isEmpty() = size == 0
 
     override fun toString(): String {
-        return if (isEmpty()){
+        return if (isEmpty()) {
             return "Empty List"
-        }else {
+        } else {
             head.toString()
         }
     }
 
-    fun push(value: T): LinkedList<T>?{
+    fun push(value: T): LinkedList<T> {
+        // Big O(1)
         head = Node(value, head)
-        if (tail == null){
+        if (tail == null) {
             tail = head
         }
-        size ++
+        size++
         return this
     }
 
     fun append(value: T) {
-        if (isEmpty()){
+        // Big O(1)
+        if (isEmpty()) {
             push(value)
             return
         }
@@ -32,25 +34,87 @@ class LinkedList<T> {
         size++
     }
 
-    fun nodeAt(index: Int): Node<T>?{
+    fun nodeAt(index: Int): Node<T>? {
+        // Big O(n)
         var currentNode = head
         var currentIndex = 0
 
-        while(currentNode != null && currentIndex < index){
+        while (currentNode != null && currentIndex < index) {
             currentNode = currentNode.next
-            currentIndex ++
+            currentIndex++
         }
         return currentNode
     }
 
-    fun insert(value: T, afterNode: Node<T>): Node<T>?{
-        if (tail == afterNode){
+    fun insert(value: T, afterNode: Node<T>): Node<T>? {
+        // Big O(1)
+        if (tail == afterNode) {
             append(value)
             return tail
         }
         val newNode = Node(value, afterNode.next)
         afterNode.next = newNode
-        size ++
+        size++
         return newNode
     }
+
+    fun pop(): T? {
+        // Big O(1)
+        if (!isEmpty()) size--
+        val result = head?.value
+        head = head?.next
+        if (isEmpty()) tail = null
+        return result
+    }
+
+    fun removeLast(): T? {
+        // Big O(n)
+        val head = head ?: return null
+        if (head.next == null) return pop()
+        size--
+
+        var prev = head
+        var current = head
+        var next = current.next
+
+        while (next != null) {
+            prev = current
+            current = next
+            next = current.next
+        }
+        prev.next = null
+        tail = prev
+        return current.value
+    }
+
+    fun removeAfter(node: Node<T>): T? {
+        // Big O(1)
+        val result = node.next?.value
+
+        if (node.next == tail) {
+            tail = node
+        }
+
+        if (node.next != null) {
+            size--
+        }
+        node.next = node.next?.next
+        return result
+    }
+
+    fun reverseLinkedList(): Node<T>?{
+        //Big O(n)
+        var current = head
+        var next: Node<T>? = null
+        var prev: Node<T>? = null
+        while (current != null) {
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        }
+        return prev
+    }
+
+
 }
