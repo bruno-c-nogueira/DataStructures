@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LinkedListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-07-19T00:13:10" hostname="DESKTOP-1OUC25R" time="10.783">
-  <properties/>
-  <testcase name="mergin nodes between zero()" classname="LinkedListTest" time="10.783"/>
-  <system-out><![CDATA[0 -> 3 -> 1 -> 0 -> 4 -> 5 -> 2 -> 0
-11
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
