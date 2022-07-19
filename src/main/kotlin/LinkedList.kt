@@ -1,4 +1,4 @@
-class LinkedList<T> {
+class LinkedList<T : Any> {
     var head: Node<T>? = null
     var tail: Node<T>? = null
     private var size = 0
@@ -115,6 +115,27 @@ class LinkedList<T> {
         }
         return prev
     }
+
+    fun mergerNodesBetweenZero(head: Node<Int>?): Node<Int>?{
+        //https://leetcode.com/problems/merge-nodes-in-between-zeros/
+        var head = head?.next
+        var current = 0
+        var p1: Node<Int>? = Node(0)
+        var p2 = p1
+
+        while (head != null){
+            if (head.value != 0){
+                current += head.value!!
+            }else {
+                p2?.next = Node(current)
+                current = 0
+                p2 = p2?.next
+            }
+            head = head.next
+        }
+        return p1?.next
+    }
+
 
 
 }
