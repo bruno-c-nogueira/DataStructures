@@ -1,4 +1,4 @@
-class LinkedList<T : Any> {
+class LinkedList<T> {
     var head: Node<T>? = null
     var tail: Node<T>? = null
     private var size = 0
@@ -136,6 +136,17 @@ class LinkedList<T : Any> {
         return p1?.next
     }
 
-
-
+    fun printInReverse() {
+        val stack = StackImpl<T>()
+        var head = head
+        while (head != null){
+            head.value?.let { stack.push(it) }
+            head = head.next
+        }
+        var node = stack.pop()
+        while (node != null){
+            println(node)
+            node = stack.pop()
+        }
+    }
 }
