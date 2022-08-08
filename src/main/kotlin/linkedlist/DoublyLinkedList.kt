@@ -1,3 +1,5 @@
+package linkedlist
+
 class DoublyLinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCollection<T>  {
     var head: Node<T>? = null
     var tail: Node<T>? = null

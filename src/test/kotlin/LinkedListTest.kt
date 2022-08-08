@@ -1,5 +1,5 @@
+import linkedlist.LinkedList
 import org.junit.jupiter.api.Test
-import sun.awt.image.ImageWatched.Link
 
 class LinkedListTest {
 

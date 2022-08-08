@@ -1,3 +1,4 @@
+import linkedlist.Node
 import org.junit.jupiter.api.Test
 
 class NodeTest {

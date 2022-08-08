@@ -1,3 +1,7 @@
+package linkedlist
+
+import stack.StackImpl
+
 class LinkedList<T> {
     var head: Node<T>? = null
     var tail: Node<T>? = null

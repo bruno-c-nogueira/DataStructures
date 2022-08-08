@@ -1,3 +1,7 @@
+package queue
+
+import linkedlist.DoublyLinkedList
+
 class QueueLinkedList<T>: Queue<T> {
     private val list = DoublyLinkedList<T>()
 

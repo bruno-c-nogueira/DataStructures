@@ -1,3 +1,5 @@
+package stack
+
 interface Stack<T> {
 
     fun push(element: T)
@@ -7,7 +9,6 @@ interface Stack<T> {
     fun peek(): T?
 
     val count: Int
-        get
 
     val isEmpty: Boolean
 
@@ -45,7 +46,7 @@ class StackImpl<T>() : Stack<T> {
 
 
     companion object {
-        fun <T> create ( elements: Iterable<T>):Stack<T>{
+        fun <T> create ( elements: Iterable<T>): Stack<T> {
             val stack = StackImpl<T>()
             for (item in elements){
                 stack.push(item)

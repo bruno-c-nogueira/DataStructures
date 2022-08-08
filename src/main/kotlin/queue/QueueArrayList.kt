@@ -1,3 +1,5 @@
+package queue
+
 class QueueArrayList<T>() : Queue<T> {
 
     private val list = arrayListOf<T>()

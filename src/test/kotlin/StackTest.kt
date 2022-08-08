@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test
+import stack.Stack
+import stack.StackImpl
+import stack.checkParentheses
 
 class StackTest {
 

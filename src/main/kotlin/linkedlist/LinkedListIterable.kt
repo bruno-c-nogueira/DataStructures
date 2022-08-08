@@ -1,3 +1,5 @@
+package linkedlist
+
 class LinkedListIterable<T>(private val list: DoublyLinkedList<T>) : MutableIterator<T> {
 
     private var index = 0
