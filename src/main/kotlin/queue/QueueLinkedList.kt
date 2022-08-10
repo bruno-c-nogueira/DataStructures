@@ -28,4 +28,10 @@ class QueueLinkedList<T>: Queue<T> {
 
     override fun toString(): String = list.toString()
 
+    fun enqueueList(elements: List<T>){
+        elements.forEach {
+            enqueue(it)
+        }
+    }
+
 }

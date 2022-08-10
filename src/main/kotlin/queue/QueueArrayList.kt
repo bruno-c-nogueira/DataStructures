@@ -20,4 +20,17 @@ class QueueArrayList<T>() : Queue<T> {
     override fun toString(): String {
         return list.toString()
     }
+
+    fun enqueueList(elements: List<T>){
+        elements.forEach {
+            enqueue(it)
+        }
+    }
+
+    fun nextPlayer(): T?{
+        val playerRemoved = dequeue()?.apply {
+            enqueue(this)
+        }
+        return playerRemoved
+    }
 }
