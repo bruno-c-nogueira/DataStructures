@@ -17,7 +17,23 @@ class TreeNodeTest {
     }
 
     @Test
-    fun `Depth-first traversal`(){
+    fun `Depth-first traversal`() {
+
+        makeBeverageTree().forEachDepthFirst {
+            println(it.value)
+        }
+
+    }
+
+    @Test
+    fun `Level order traversal`() {
+        val tree = makeBeverageTree()
+        tree.forEachLevelOrder {
+            println(it.value)
+        }
+    }
+
+    private fun makeBeverageTree(): TreeNode<String> {
         val tree = TreeNode("Beverages")
 
         val hot = TreeNode("Hot")
@@ -47,10 +63,6 @@ class TreeNodeTest {
         tea.add(chaiTea)
         soda.add(gingerAle)
         soda.add(bitterLemon)
-
-        tree.forEachDepthFirst {
-            println(it.value)
-        }
-
+        return tree
     }
 }
