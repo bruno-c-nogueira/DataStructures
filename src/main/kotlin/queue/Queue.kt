@@ -7,7 +7,6 @@ interface Queue<T> {
     fun dequeue():T?
 
     val count: Int
-        get
 
     val isEmpty: Boolean
         get() = count == 0

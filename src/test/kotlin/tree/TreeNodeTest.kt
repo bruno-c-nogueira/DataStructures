@@ -33,6 +33,52 @@ class TreeNodeTest {
         }
     }
 
+    @Test
+    fun `Search in a tree`() {
+        val tree = makeBeverageTree()
+        tree.search("ginger ale")?.let {
+            println("Found node: ${it.value}")
+        }
+        tree.search("WKD Blue")?.let {
+            println(it.value)
+        } ?: println("Couldn't find WKD Blue")
+    }
+
+    //Challenge 1
+    @Test
+    fun `Print values in a tree in an order based on their level`() {
+        val oneLevel = TreeNode(15)
+
+        val twoLevel1 = TreeNode(1)
+        val twoLevel2 = TreeNode(17)
+        val twoLevel3 = TreeNode(20)
+
+        val threeLevel1 = TreeNode(1)
+        val threeLevel2 = TreeNode(5)
+        val threeLevel3 = TreeNode(0)
+
+        val threeLevel4 = TreeNode(2)
+
+        val threeLevel5 = TreeNode(5)
+        val threeLevel6 = TreeNode(7)
+
+        oneLevel.add(twoLevel1)
+        oneLevel.add(twoLevel2)
+        oneLevel.add(twoLevel3)
+
+        twoLevel1.add(threeLevel1)
+        twoLevel1.add(threeLevel2)
+        twoLevel1.add(threeLevel3)
+
+        twoLevel2.add(threeLevel4)
+
+        twoLevel3.add(threeLevel5)
+        twoLevel3.add(threeLevel6)
+
+        oneLevel.printEachLevel()
+
+    }
+
     private fun makeBeverageTree(): TreeNode<String> {
         val tree = TreeNode("Beverages")
 
