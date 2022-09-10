@@ -153,4 +153,24 @@ class LinkedList<T> {
             node = stack.pop()
         }
     }
+
+    fun removeElements(`val` : Int): Node<T>?{
+        var current: Node<Int>? = Node(0)
+        current?.next = head as Node<Int>
+        if (current?.next == null && current?.value == `val`) return null
+
+        while (current != null){
+            if (current.next?.value == `val`){
+                current.next  = current.next?.next
+            }
+            current = current.next
+        }
+
+        if (head?.value == `val` && head?.next?.value == `val`){
+            return null
+        }
+        return if (head?.value == `val`) return null else head
+    }
+
 }
+

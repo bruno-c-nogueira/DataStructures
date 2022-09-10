@@ -1,4 +1,4 @@
-import linkedlist.LinkedList
+importlinkedlist.LinkedList
 import org.junit.jupiter.api.Test
 
 class LinkedListTest {
@@ -107,5 +107,13 @@ class LinkedListTest {
         linkedList.append(5)
         println(linkedList)
         linkedList.printInReverse()
+    }
+
+    @Test
+    fun `test the remove`(){
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.removeElements(1)
     }
 }
