@@ -106,7 +106,7 @@ class LinkedList<T> {
         return result
     }
 
-    fun reverseLinkedList(): Node<T>?{
+    fun reverseLinkedList(): Node<T>? {
         //Big O(n)
         var current = head
         var next: Node<T>? = null
@@ -120,17 +120,17 @@ class LinkedList<T> {
         return prev
     }
 
-    fun mergerNodesBetweenZero(head: Node<Int>?): Node<Int>?{
+    fun mergerNodesBetweenZero(head: Node<Int>?): Node<Int>? {
         //https://leetcode.com/problems/merge-nodes-in-between-zeros/
         var head = head?.next
         var current = 0
         var p1: Node<Int>? = Node(0)
         var p2 = p1
 
-        while (head != null){
-            if (head.value != 0){
+        while (head != null) {
+            if (head.value != 0) {
                 current += head.value!!
-            }else {
+            } else {
                 p2?.next = Node(current)
                 current = 0
                 p2 = p2?.next
@@ -143,34 +143,36 @@ class LinkedList<T> {
     fun printInReverse() {
         val stack = StackImpl<T>()
         var head = head
-        while (head != null){
+        while (head != null) {
             head.value?.let { stack.push(it) }
             head = head.next
         }
         var node = stack.pop()
-        while (node != null){
+        while (node != null) {
             println(node)
             node = stack.pop()
         }
     }
 
-    fun removeElements(`val` : Int): Node<T>?{
-        var current: Node<Int>? = Node(0)
-        current?.next = head as Node<Int>
-        if (current?.next == null && current?.value == `val`) return null
+    fun removeElements(`val`: Int): Node<T>? {
+        var current = head
+        if (current?.next?.next == null && current?.next?.value == `val`) return null
 
-        while (current != null){
-            if (current.next?.value == `val`){
-                current.next  = current.next?.next
+        if (head?.value == `val`){
+            head = head?.next
+        }
+
+        while (current != null) {
+            if (current.next?.value == `val`) {
+                current.next = current.next?.next
             }
             current = current.next
+
+
         }
 
-        if (head?.value == `val` && head?.next?.value == `val`){
-            return null
-        }
-        return if (head?.value == `val`) return null else head
+
+        return head?.next
     }
 
 }
-

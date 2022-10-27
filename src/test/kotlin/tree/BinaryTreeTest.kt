@@ -33,6 +33,7 @@ class BinaryTreeTest {
 
     }
 
+
     @Test
     fun `testing the height of binary tree`(){
         val tree = buildDefaultBinaryTree()

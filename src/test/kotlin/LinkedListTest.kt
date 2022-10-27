@@ -1,4 +1,4 @@
-importlinkedlist.LinkedList
+import linkedlist.LinkedList
 import org.junit.jupiter.api.Test
 
 class LinkedListTest {
@@ -28,12 +28,20 @@ class LinkedListTest {
         linked.append(1)
         linked.append(2)
         linked.append(3)
-        println(linked.toString())
+        //println(linked.toString())
         var middleNode = linked.nodeAt(1)!!
         for (i in 1..3){
             middleNode = linked.insert(5 * i, middleNode)!!
         }
-        println(linked.toString())
+        //println(linked.toString())
+
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(3)
+        linkedList.append(4)
+
+        linkedList.nodeAt(0)?.let { linkedList.insert(2, it) }
+        println(linkedList)
     }
 
     @Test
@@ -112,8 +120,10 @@ class LinkedListTest {
     @Test
     fun `test the remove`(){
         val linkedList = LinkedList<Int>()
-        linkedList.append(1)
-        linkedList.append(2)
-        linkedList.removeElements(1)
+        linkedList.append(7)
+        linkedList.append(7)
+        linkedList.append(7)
+        linkedList.append(7)
+        linkedList.removeElements(7)
     }
 }

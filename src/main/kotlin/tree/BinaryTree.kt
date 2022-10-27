@@ -4,9 +4,12 @@ import kotlin.math.max
 
 typealias VisitorBinaryTree<T> = ((T?) -> Unit)
 
-class BinaryTree<T>(val value: T) {
+class BinaryTree<T>(var value: T) {
     var leftChild: BinaryTree<T>? = null
     var rightChild: BinaryTree<T>? = null
+
+    val min: BinaryTree<T>?
+        get() = leftChild?.min?: this
 
     override fun toString() = diagram(this)
 
