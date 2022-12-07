@@ -35,16 +35,28 @@ class BinaryTreeTest {
 
 
     @Test
-    fun `testing the height of binary tree`(){
+    fun `testing the height of binary tree`() {
         val tree = buildDefaultBinaryTree()
         assert(tree.height() == 2)
     }
 
     @Test
-    fun `serialize binary tree`(){
+    fun `serialize binary tree`() {
         val tree = buildDefaultBinaryTree()
         val array = tree.serialize()
         println(tree.deserialize(array))
+    }
+
+    @Test
+    fun deletingTreeByDeeperNodes() {
+        val simpleTree = BinaryTree<Int>(1)
+        simpleTree.leftChild = BinaryTree(2)
+        simpleTree.leftChild?.leftChild = BinaryTree(4)
+        simpleTree.leftChild?.rightChild = BinaryTree(5)
+
+        simpleTree.rightChild = BinaryTree(3)
+
+        simpleTree.deletingDeeperNodes(simpleTree)
     }
 
 

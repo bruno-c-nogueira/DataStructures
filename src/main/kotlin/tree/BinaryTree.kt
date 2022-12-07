@@ -32,21 +32,39 @@ class BinaryTree<T>(var value: T) {
         } ?: "${root}null\n"
     }
 
-    fun traversePreOrder(visit: VisitorBinaryTree<T>) {
-        leftChild?.traversePreOrder(visit)
-        visit(value)
-        rightChild?.traversePreOrder(visit)
-    }
 
     fun height(node: BinaryTree<T>? = this): Int {
-        return node?.let { 1 + max(height(node.leftChild),
-            height(node.rightChild)) } ?: -1
+        return node?.let { 1 + max(height(node.leftChild), height(node.rightChild)) } ?: -1
     }
 
     fun traversePreOrderWithNull(visit: VisitorBinaryTree<T>) {
         visit(value)
         leftChild?.traversePreOrderWithNull(visit) ?: visit(null)
         rightChild?.traversePreOrderWithNull(visit) ?: visit(null)
+    }
+
+    fun traverseInOrder(visit: VisitorBinaryTree<T>) {
+        leftChild?.traverseInOrder(visit)
+        visit(value)
+        rightChild?.traverseInOrder(visit)
+    }
+    fun traversePreOrder(visit: VisitorBinaryTree<T>) {
+        visit(value)
+        leftChild?.traversePreOrder(visit)
+        rightChild?.traversePreOrder(visit)
+    }
+    //allways seach for the deeper node
+    fun traversePostOrder(visit: VisitorBinaryTree<T>) {
+        leftChild?.traversePostOrder(visit)
+        rightChild?.traversePostOrder(visit)
+        visit(value)
+    }
+
+    fun deletingDeeperNodes(tree: BinaryTree<T>?){
+      if (tree == null) return
+        deletingDeeperNodes(tree.leftChild)
+        deletingDeeperNodes(tree.rightChild)
+        println("Deleting Node:${tree.value}... ")
     }
 
     fun serialize(node: BinaryTree<T> = this): MutableList<T?> {

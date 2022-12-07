@@ -3,7 +3,7 @@ package tree
 import org.junit.jupiter.api.Test
 
 
-class BinarySearchTreeTest {
+class BinarySearchTestTreeTest {
     private val example = BinarySearchTree<Int>().apply {
         insert(3)
         insert(1)
