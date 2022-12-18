@@ -167,11 +167,7 @@ class LinkedList<T> {
                 current.next = current.next?.next
             }
             current = current.next
-
-
         }
-
-
         return head?.next
     }
 
