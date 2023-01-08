@@ -2,7 +2,6 @@ package heap
 
 import java.util.*
 import kotlin.collections.ArrayList
-import jdk.nashorn.internal.objects.NativeArray.sort as sort1
 
 abstract class AbstractHeap<Element>() : Heap<Element> {
     abstract fun compare(a: Element, b: Element): Int
