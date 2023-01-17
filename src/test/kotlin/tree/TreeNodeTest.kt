@@ -110,5 +110,30 @@ class TreeNodeTest {
         soda.add(gingerAle)
         soda.add(bitterLemon)
         return tree
+
+        /**
+         *                               Beverages
+         *                        /                   \
+         *                      Hot                  Cold
+         *                    /   \  \                / \
+         *                  Tea Cofee Chocolate   Soda  Milk
+         *                /  \\                       /  \
+         *               black green chai       ginger    bitter lemon
+         *
+         *
+         *
+         *
+         * **/
+
+    }
+
+    @Test
+    fun `breadth-first order`() {
+        makeBeverageTree().bfs()
+    }
+
+    @Test
+    fun `depth-first order`() {
+        makeBeverageTree().dfs()
     }
 }
