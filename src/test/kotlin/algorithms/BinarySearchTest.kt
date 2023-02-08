@@ -1,3 +1,5 @@
+package algorithms
+
 import org.junit.jupiter.api.Test
 
 class BinarySearchTest {
