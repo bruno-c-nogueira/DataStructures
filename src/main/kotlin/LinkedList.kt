@@ -1,29 +1,28 @@
 class LinkedList<T> {
-    var head : Node<T>? = null
-    var tail : Node<T>? = null
+    var head: Node<T>? = null
+    var tail: Node<T>? = null
     private var size = 0
 
     fun isEmpty() = size == 0
 
     override fun toString(): String {
-        return if (isEmpty()){
-            return "Empty List"
-        }else {
-            head.toString()
-        }
+        return if(head == null) {
+            "Linked List is empty"
+        } else head.toString()
     }
 
-    fun push(value: T): LinkedList<T>?{
-        head = Node(value, head)
-        if (tail == null){
-            tail = head
-        }
+    fun append(node: Node<T>) {
+
+    }
+
+    fun push(value: T){
+        head = Node(value = value, next = head)
+        if (tail == null) tail = head
         size ++
-        return this
     }
 
-    fun append(value: T) {
-        if (isEmpty()){
+    fun append(value: T){
+        if (tail == null) {
             push(value)
             return
         }
@@ -32,25 +31,68 @@ class LinkedList<T> {
         size++
     }
 
-    fun nodeAt(index: Int): Node<T>?{
-        var currentNode = head
-        var currentIndex = 0
-
-        while(currentNode != null && currentIndex < index){
-            currentNode = currentNode.next
-            currentIndex ++
+    fun nodeAt(index: Int): Node<T>? {
+        var current = head
+        var counter = 0
+        while (counter < index && current != null) {
+            current = current.next
+            counter ++
         }
-        return currentNode
+        return  current
     }
 
-    fun insert(value: T, afterNode: Node<T>): Node<T>?{
-        if (tail == afterNode){
+    fun insert(value: T, afterNode: Node<T>): Node<T>? {
+        if(tail == afterNode){
             append(value)
             return tail
         }
         val newNode = Node(value, afterNode.next)
-        afterNode.next = newNode
-        size ++
+        afterNode.next =newNode
         return newNode
     }
+
+
+    fun pop(): Node<T>? {
+        val result = head
+        head = head?.next
+        if (!isEmpty()){
+            size --
+        }
+
+        if (isEmpty()){
+            tail = null
+        }
+        return result
+    }
+
+    fun removeLast():Node<T>? {
+        if (head == null) return null
+        if (head?.next == null) pop()
+
+        var prev : Node<T>? = null
+        var current : Node<T>? = head
+
+        while(current?.next != null) {
+            prev = current
+            current = current.next
+        }
+        val result = prev?.next
+        prev?.next =null
+        return result
+    }
+
+    fun removeAfter(node: Node<T>): T? {
+        val result = node.next?.value
+
+        if (node.next == tail) {
+            tail = node
+        }
+
+        if (node.next != null) size--
+
+        node.next = node.next?.next
+
+        return result
+    }
+
 }

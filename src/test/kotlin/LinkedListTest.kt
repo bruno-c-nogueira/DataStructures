@@ -34,4 +34,34 @@ class LinkedListTest {
         }
         println(linked.toString())
     }
+
+    @Test
+    fun `test pop`(){
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        assert(linkedList.pop()?.value == 1)
+    }
+
+    @Test
+    fun `test removeLast`() {
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        assert(linkedList.removeLast()?.value == 3)
+    }
+
+    @Test
+    fun `test removeAfter`() {
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        linkedList.append(4)
+        val target = linkedList.nodeAt(1)
+        assert(target?.let { linkedList.removeAfter(it) } == 3)
+        println(linkedList)
+    }
 }
