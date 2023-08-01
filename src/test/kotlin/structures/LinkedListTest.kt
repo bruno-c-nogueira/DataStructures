@@ -1,3 +1,5 @@
+package structures
+
 import org.junit.jupiter.api.Test
 
 class LinkedListTest {
@@ -63,5 +65,56 @@ class LinkedListTest {
         val target = linkedList.nodeAt(1)
         assert(target?.let { linkedList.removeAfter(it) } == 3)
         println(linkedList)
+    }
+
+    @Test
+    fun `test reverse linked list`() {
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        linkedList.append(4)
+
+        println(linkedList)
+        println(linkedList.reverseLinkedList())
+    }
+
+    @Test
+    fun `test reverse linked list recursively`() {
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        linkedList.append(4)
+
+        println(linkedList)
+        println(linkedList.reverseLinkedList())
+    }
+
+    @Test
+    fun `find middle`() {
+        val linkedList = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        linkedList.append(4)
+        linkedList.append(5)
+        linkedList.append(6)
+
+        println(linkedList.getMiddle())
+    }
+
+    @Test
+    fun `merge two linked list`() {
+        val linkedList = LinkedList<Int>()
+        val linkedList2 = LinkedList<Int>()
+        linkedList.append(1)
+        linkedList.append(2)
+        linkedList.append(3)
+        linkedList2.append(4)
+        linkedList2.append(5)
+        linkedList2.append(6)
+
+        println(linkedList.mergeTwoLinkedList(linkedList.head, linkedList2.head))
     }
 }

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LinkedListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-07-22T18:50:53" hostname="Anas-MacBook-Air.local" time="0.006">
-  <properties/>
-  <testcase name="test removeAfter()" classname="LinkedListTest" time="0.006"/>
-  <system-out><![CDATA[1 -> 2 -> 4
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

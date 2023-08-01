@@ -1,4 +1,7 @@
+package structures
+
 import org.junit.jupiter.api.Test
+import structures.Node
 
 class NodeTest {
         @Test
