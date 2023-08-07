@@ -1,4 +1,7 @@
-package structures
+package structures.linkedlist
+
+import structures.Node
+import structures.StackImpl
 
 class LinkedList<T> {
     var head: Node<T>? = null
@@ -157,4 +160,22 @@ private fun <T> addInReverse(list: LinkedList<T>, node: Node<T>) {
     if (next != null) addInReverse(list, next)
     node.value?.let { list.append(it) }
 }
+
+fun <T> LinkedList<T>.printInReverse() {
+    val stack = StackImpl<T>()
+
+    var current = head
+    while(current != null){
+        current.value?.let { stack.append(it) }
+        current = current.next
+    }
+
+    var node = stack.pop()
+    while (node!= null) {
+        println(node)
+        node = stack.pop()
+    }
+}
+
+
 

@@ -1,6 +1,7 @@
 package structures
 
 import org.junit.jupiter.api.Test
+import structures.linkedlist.LinkedList
 
 class LinkedListTest {
 

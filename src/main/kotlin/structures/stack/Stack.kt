@@ -8,6 +8,8 @@ interface Stack<T> {
 
     fun peek(): T?
 
+    fun isEmpty(): Boolean
+
     val count: Int
 }
 
@@ -31,6 +33,10 @@ class StackImpl<T> : Stack<T> {
         return storage.lastOrNull()
     }
 
+    override fun isEmpty(): Boolean {
+        return storage.isEmpty()
+    }
+
     override fun toString(): String {
         return storage.joinToString()
     }
@@ -44,4 +50,20 @@ class StackImpl<T> : Stack<T> {
             return stack
         }
     }
+}
+
+fun String.parenthesesValidator(): Boolean {
+    val stack = StackImpl<Char>()
+
+    this.forEach {
+        if (it == '('){
+            stack.append(it)
+        } else if(it == ')'){
+            if (stack.isEmpty()) return false
+        } else {
+            stack.pop()
+        }
+    }
+    return stack.isEmpty()
+
 }
