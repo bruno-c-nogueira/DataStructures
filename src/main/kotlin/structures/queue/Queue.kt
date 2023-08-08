@@ -1,4 +1,4 @@
-package structures
+package structures.queue
 
 interface Queue<T> {
 

@@ -1,6 +1,6 @@
 package structures.linkedlist
 
-import structures.Queue
+import structures.queue.Queue
 
 class LinkedListQueue<T>: Queue<T> {
     private val list = DoublyLinkedList<T>()

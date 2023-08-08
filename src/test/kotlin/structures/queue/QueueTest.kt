@@ -1,4 +1,4 @@
-package structures
+package structures.queue
 
 import org.junit.jupiter.api.Test
 
