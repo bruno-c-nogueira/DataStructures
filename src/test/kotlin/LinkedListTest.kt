@@ -1,4 +1,9 @@
 import linkedlist.LinkedList
+import linkedlist.Node
+import linkedlist.challenges.findMiddle
+import linkedlist.challenges.mergeLinkedLists
+import linkedlist.challenges.printReverse
+import linkedlist.challenges.reverseLinkedList
 import org.junit.jupiter.api.Test
 
 class LinkedListTest {
@@ -125,5 +130,51 @@ class LinkedListTest {
         linkedList.append(7)
         linkedList.append(7)
         linkedList.removeElements(7)
+    }
+
+    @Test
+    fun `reverse linked list` () {
+        val linkedList = Node<Int>(0)
+        linkedList.next = Node(1)
+        linkedList.next!!.next = Node(2)
+        linkedList.next!!.next!!.next = Node(3)
+
+       reverseLinkedList(linkedList)
+        assert(true)
+    }
+
+    @Test
+    fun `print linked list` () {
+        val linkedList = Node<Int>(0)
+        linkedList.next = Node(1)
+        linkedList.next!!.next = Node(2)
+        linkedList.next!!.next!!.next = Node(3)
+
+        printReverse(linkedList)
+        assert(true)
+    }
+
+    @Test
+    fun `find middle` () {
+        val linkedList = Node<Int>(0)
+        linkedList.next = Node(1)
+        linkedList.next!!.next = Node(2)
+
+        findMiddle(linkedList)
+        assert(true)
+    }
+
+    @Test
+    fun `merged linked` () {
+        val linkedList = Node<Int>(0)
+        linkedList.next = Node(1)
+        linkedList.next!!.next = Node(2)
+
+       val linkedList2 = Node<Int>(1)
+        linkedList2.next = Node(2)
+        linkedList2.next!!.next = Node(3)
+
+        mergeLinkedLists(linkedList, linkedList2)
+        assert(true)
     }
 }

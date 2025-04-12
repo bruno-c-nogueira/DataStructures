@@ -1,7 +1,6 @@
 package tree
 
 import queue.QueueArrayList
-import sun.misc.Queue
 
 
 class TreeNode<T>(val value: T) {
@@ -23,7 +22,7 @@ class TreeNode<T>(val value: T) {
     //to a lower level.
     fun forEachLevelOrder(visit: Visitor<T>) {
         visit(this)
-        val queue = Queue<TreeNode<T>>()
+        val queue = QueueArrayList<TreeNode<T>>()
         children.forEach { queue.enqueue(it) }
         var node = queue.dequeue()
         while (node != null) {

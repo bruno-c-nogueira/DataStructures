@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test
 import stack.Stack
 import stack.StackImpl
+import stack.challenges.isValid
 import stack.checkParentheses
 
 class StackTest {
@@ -35,6 +36,13 @@ class StackTest {
     fun `check parentheses in the string`(){
         val test = "h((e))llo(world)()"
         assert(test.checkParentheses())
+
+    }
+
+    @Test
+    fun `check parentheses in the string1`(){
+        val test = "h((e))llo(world)()"
+        assert(isValid("]"))
 
     }
 }
