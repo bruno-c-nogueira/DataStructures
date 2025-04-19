@@ -5,7 +5,7 @@ import java.util.*
 
 
 class TreeNode<T>(val value: T) {
-    private val  children: MutableList<TreeNode<T>> = mutableListOf()
+    private val children: MutableList<TreeNode<T>> = mutableListOf()
 
     fun add(child: TreeNode<T>) = children.add(child)
 
@@ -17,15 +17,19 @@ class TreeNode<T>(val value: T) {
     }
 
     fun levelOrderTraversal(tree: TreeNode<T>) {
-        var level = 0
         val queue: QueueArrayList<TreeNode<T>> = QueueArrayList<TreeNode<T>>()
         queue.enqueue(tree)
-        while (queue.isEmpty == false) {
-            val item = queue.dequeue()
-            println(item?.value)
-            item?.children?.let { queue.enqueueList(it) }
+        while (!queue.isEmpty) {
+            var nodesLeftInCurrentLevel = queue.count
+            while (nodesLeftInCurrentLevel > 0) {
+                queue.dequeue()?.let { node ->
+                    print(node.value.toString() + " ")
+                    node.children.let { queue.enqueueList(it) }
+                    nodesLeftInCurrentLevel--
+                } ?: break
+            }
+            println()
         }
-        println(level)
     }
 }
 
