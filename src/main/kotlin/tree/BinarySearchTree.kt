@@ -66,11 +66,25 @@ class BinarySearchTree<T : Comparable<T>>() {
                 }
                 node.rightChild = remove(node.rightChild, node.value)
             }
+
             value < node.value -> node.leftChild = remove(node.leftChild, value)
             else -> node.rightChild = remove(node.rightChild, value)
         }
         return node
     }
 
+    fun isValidBSTHelper(node: BinaryTree<Int>?, min: Int?, max: Int?): Boolean {
+        if (node == null) return true
 
+        if ((min != null && node.value <= min) || (max != null && node.value >= max)) {
+            return false
+        }
+
+        return isValidBSTHelper(node = node.leftChild, min = min, max = node.value) &&
+                isValidBSTHelper(
+                    node = node.rightChild,
+                    min = node.value,
+                    max = max
+                )
+    }
 }

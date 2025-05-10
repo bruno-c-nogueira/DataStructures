@@ -34,6 +34,13 @@ class BinaryNode<T>(val value: T) {
             }
         } ?: "${root}null\n"
     }
+
+    fun traversePreOrder(visit: Visitor<T>) {
+        visit(value)
+        leftChild?.traversePreOrder(visit)
+        rightChild?.traversePreOrder(visit)
+    }
+
 }
 // left -> root -> right
 fun BinaryNode<Int>.inOrder() {
@@ -85,6 +92,14 @@ fun treeLevelList(tree: BinaryNode<Int>?): Int {
         level +=1
     }
     return level
+}
+
+fun serialize(tree: BinaryTree<Int>): MutableList<Int?> {
+    val list = mutableListOf<Int?>()
+    tree.traversePreOrder {
+        list.add(it)
+    }
+    return list
 }
 
 fun main() {
