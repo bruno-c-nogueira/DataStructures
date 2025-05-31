@@ -2,6 +2,10 @@ package tree2
 
 import queue.QueueArrayList
 import tree.BinaryTree
+import tree2.traverse.inOrder
+import tree2.traverse.levelOrder
+import tree2.traverse.postOrder
+import tree2.traverse.preOrder
 
 
 /**
@@ -42,36 +46,6 @@ class BinaryNode<T>(val value: T) {
     }
 
 }
-// left -> root -> right
-fun BinaryNode<Int>.inOrder() {
-    this.leftChild?.inOrder()
-    println(this.value)
-    this.rightChild?.inOrder()
-}
-
-// root -> left -> right
-fun preOrder( tree: BinaryNode<Int>?) {
-    if (tree == null)
-        return
-
-    // First deal with the node
-    print(tree.value.toString() + " ");
-
-    // Then recur on left subtree
-    preOrder(tree.leftChild);
-
-    // Finally recur on right subtree
-    preOrder(tree.rightChild);
-}
-// left -> right -> root
-fun postOrder(tree: BinaryNode<Int>?) {
-    if (tree == null) return
-
-    tree.leftChild?.let { postOrder(it) }
-    tree.rightChild?.let { postOrder(it) }
-    println(tree.value)
-}
-
 fun binaryHeight(tree: BinaryNode<Int>?): Int {
     if (tree == null) return 0
      return maxOf(binaryHeight(tree.rightChild) + 1, binaryHeight(tree.leftChild) + 1)
@@ -118,5 +92,20 @@ fun main() {
     root.leftChild?.leftChild?.leftChild?.leftChild = BinaryNode(10)
 
     root.rightChild?.leftChild?.rightChild = BinaryNode(9)
-    println(treeLevelList(root))
+
+    println("Traverse Tree In-Order ----")
+    inOrder(root)
+    println("---------------------------")
+
+    println("Traverse Tree Pre-Order ----")
+    preOrder(root)
+    println("---------------------------")
+
+    println("Traverse Tree Post-Order ----")
+    postOrder(root)
+    println("---------------------------")
+
+    println("Traverse Tree Level-Order ----")
+    levelOrder(root)
+    println("---------------------------")
 }
