@@ -72,15 +72,15 @@ class BinaryTree<T>(var value: T) {
         node.traversePreOrderWithNull { list.add(it) }
         return list
     }
-
-    fun deserialize(list: MutableList<T?>): BinaryTree<T?>? {
-        // 1
-        val rootValue = list.removeAt(list.size - 1) ?: return null
-        // 2
-        val root = BinaryTree<T?>(rootValue)
-        root.leftChild = deserialize(list)
-        root.rightChild = deserialize(list)
-        return root
-    }
+//
+//    fun deserialize(list: MutableList<T?>): BinaryTree<T?>? {
+//        // 1
+//        val rootValue = list.removeAt(list.size - 1) ?: return null
+//        // 2
+//        val root = BinaryTree<T?>(rootValue)
+//        root.leftChild = deserialize(list)
+//        root.rightChild = deserialize(list)
+//        return root
+//    }
 
 }
