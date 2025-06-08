@@ -1,9 +1,7 @@
 import linkedlist.LinkedList
 import linkedlist.Node
-import linkedlist.challenges.findMiddle
-import linkedlist.challenges.mergeLinkedLists
-import linkedlist.challenges.printReverse
-import linkedlist.challenges.reverseLinkedList
+import linkedlist.challenges.*
+import linkedlist.challenges.ListNode
 import org.junit.jupiter.api.Test
 
 class LinkedListTest {
@@ -134,13 +132,12 @@ class LinkedListTest {
 
     @Test
     fun `reverse linked list` () {
-        val linkedList = Node<Int>(0)
-        linkedList.next = Node(1)
-        linkedList.next!!.next = Node(2)
-        linkedList.next!!.next!!.next = Node(3)
+        val linkedList = Node<Int>(1)
+        linkedList.next = Node(2)
+        linkedList.next!!.next = Node(3)
 
-       reverseLinkedList(linkedList)
-        assert(true)
+        val test = reverseLinkedList2(linkedList)
+        assert(test!= null)
     }
 
     @Test
@@ -175,6 +172,32 @@ class LinkedListTest {
         linkedList2.next!!.next = Node(3)
 
         mergeLinkedLists(linkedList, linkedList2)
+        assert(true)
+    }
+
+    @Test
+    fun `merged linked2` () {
+        val linkedList = ListNode(0)
+        linkedList.next = ListNode(1)
+        linkedList.next!!.next = ListNode(2)
+
+       val linkedList2 = ListNode(1)
+        linkedList2.next = ListNode(2)
+        linkedList2.next!!.next = ListNode(3)
+
+        mergeTwoLists(linkedList, linkedList2)
+        assert(true)
+    }
+
+    @Test
+    fun `remove Nth number` () {
+        val linkedList = ListNode(1)
+        linkedList.next = ListNode(2)
+//        linkedList.next!!.next = ListNode(2)
+//        linkedList.next!!.next!!.next = ListNode(3)
+
+
+        removeNthFromEnd(linkedList, 2)
         assert(true)
     }
 }
